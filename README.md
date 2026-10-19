@@ -2,6 +2,8 @@
 
 `skill-router` is a lightweight coordination skill for selecting the smallest appropriate installed skill and identifying when a task needs Plan Mode.
 
+中文文档：[README.zh-CN.md](README.zh-CN.md)
+
 It does not replace or modify peer skills. The initial registry covers:
 
 - `analytics`
