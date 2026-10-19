@@ -35,12 +35,24 @@ This workflow supplements the host's project instructions and does not override 
 
 Read [skill-registry.yaml](references/skill-registry.yaml) when the request may match an installed peer skill.
 
+The router is the automatic entry point. Peer skills are explicit-only by default. After selecting a peer skill, locate and read that peer's `SKILL.md` from the supported paths below and use its workflow. Do not rely on platform-level implicit invocation, and do not load every peer skill.
+
 - Use `analytics` for tracking, measurement, attribution, conversion events, GA4, GTM, UTM, Mixpanel, Segment, or questions about whether marketing or product activity is working.
 - Use `ui-ux-pro-max` for product structure, interaction, responsive behavior, accessibility, component systems, dashboards, or stack-specific UI implementation.
 - Use `frontend-design` for new pages, landing pages, brand sites, visual direction, typography, color, composition, or distinctive presentation.
 - Use `web-design-guidelines` for existing Web UI reviews, accessibility audits, UX reviews, best-practice checks, or pre-release Web validation.
 - Use `design-system` for design tokens, CSS variables, typography scales, spacing systems, component specifications, and design system migration.
 - Use `ui-styling` for Tailwind, shadcn/ui, Radix UI, accessible components, themes, dark mode, and frontend styling implementation.
+
+## Peer Skill Paths
+
+Resolve a selected peer skill by checking these locations in order:
+
+1. `$CODEX_HOME/skills/<name>/SKILL.md`
+2. `<project>/.claude/skills/<name>/SKILL.md`
+3. `~/.claude/skills/<name>/SKILL.md`
+
+If more than one copy exists, use the copy belonging to the active host and project. If no copy exists, report the missing peer skill and stop that workflow.
 
 ## Combination Rules
 
@@ -62,4 +74,4 @@ The router does not copy, modify, install, or replace peer skills. If a selected
 
 ## Extending the Registry
 
-Add future skills to `references/skill-registry.yaml` with a name, use cases, exclusions, responsibility, and optional follow-up skills. Keep detailed procedures in the peer skill's own `SKILL.md`.
+Add future skills to `references/skill-registry.yaml` with a name, use cases, exclusions, responsibility, `invocation: explicit-only`, and optional follow-up skills. Also add the platform metadata that disables implicit invocation before testing the new route. Keep detailed procedures in the peer skill's own `SKILL.md`.

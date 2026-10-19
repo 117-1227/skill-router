@@ -2,6 +2,7 @@ version: "1.0"
 skills:
   - name: analytics
     priority: domain
+    invocation: explicit-only
     responsibility: "Analytics tracking, measurement, attribution, and marketing or product performance decisions."
     use_when:
       - "Set up, improve, or audit analytics tracking."
@@ -16,6 +17,7 @@ skills:
 
   - name: ui-ux-pro-max
     priority: foundation
+    invocation: explicit-only
     responsibility: "Product structure, interaction, responsive behavior, accessibility, and stack-specific UI implementation."
     use_when:
       - "Design, review, or refactor a Web, mobile, or desktop interface."
@@ -30,6 +32,7 @@ skills:
 
   - name: frontend-design
     priority: visual
+    invocation: explicit-only
     responsibility: "Visual direction, brand expression, typography, color, composition, and distinctive page presentation."
     use_when:
       - "Create a new page, landing page, brand site, or marketing page."
@@ -44,6 +47,7 @@ skills:
 
   - name: web-design-guidelines
     priority: audit
+    invocation: explicit-only
     responsibility: "Web Interface Guidelines compliance, accessibility review, UX review, and pre-release Web validation."
     use_when:
       - "Review existing UI code or a Web page."
@@ -57,6 +61,7 @@ skills:
 
   - name: design-system
     priority: foundation
+    invocation: explicit-only
     responsibility: "Design tokens, component specifications, CSS variables, and systematic design architecture."
     use_when:
       - "Create or refine design tokens."
@@ -71,6 +76,7 @@ skills:
 
   - name: ui-styling
     priority: implementation
+    invocation: explicit-only
     responsibility: "Implement accessible UI components, themes, responsive layouts, and styling systems."
     use_when:
       - "Build UI components with Tailwind, shadcn/ui, or Radix UI."
