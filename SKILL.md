@@ -15,19 +15,30 @@ If the user names a skill or invokes `$skill-name`, treat that choice as the pre
 
 ## Planning Gate
 
-For complex tasks, first inspect the environment and determine whether the host's planning mode or equivalent approval workflow is required. In Codex, this is Plan Mode.
+Determine whether the task is simple or complex before selecting a peer workflow.
 
-Complex tasks include multiple-file changes, architecture, refactoring, migration, deployment, production systems, databases, permissions, or broad user-facing workflows.
+A task is complex when it involves multiple files, architecture, refactoring,
+migration, deployment, production systems, databases, permissions, external
+services, broad user-facing workflows, multiple skills, ambiguous requirements,
+or creating or modifying skills, plugins, or automation workflows.
 
-In the host's planning mode:
+A task is simple only when it is localized, low-risk, reversible, clearly
+defined, and does not involve any of the conditions above.
+
+If the task is complex and the host is not already in planning mode, stop and ask
+the user to enable the host's planning mode. In Codex, this is Plan Mode.
+
+After planning mode is enabled:
 
 - Explore the environment without mutating files;
 - Resolve discoverable facts before asking questions;
 - Ask only for decisions that materially affect the implementation;
 - Produce a decision-complete plan;
-- Wait for plan confirmation before modifying files.
+- Wait for the user's confirmation.
 
-Small, clearly defined tasks may skip Plan Mode.
+Do not modify files or perform external writes before the plan is confirmed.
+
+Small, clearly defined tasks may skip this planning gate.
 
 This workflow supplements the host's project instructions and does not override system instructions, user requests, project instructions, or session mode.
 
