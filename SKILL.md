@@ -15,11 +15,11 @@ If the user names a skill or invokes `$skill-name`, treat that choice as the pre
 
 ## Planning Gate
 
-For complex tasks, first inspect the environment and determine whether Plan Mode is required.
+For complex tasks, first inspect the environment and determine whether the host's planning mode or equivalent approval workflow is required. In Codex, this is Plan Mode.
 
 Complex tasks include multiple-file changes, architecture, refactoring, migration, deployment, production systems, databases, permissions, or broad user-facing workflows.
 
-In Plan Mode:
+In the host's planning mode:
 
 - Explore the environment without mutating files;
 - Resolve discoverable facts before asking questions;
@@ -29,7 +29,7 @@ In Plan Mode:
 
 Small, clearly defined tasks may skip Plan Mode.
 
-This workflow supplements the minimal global rule in `AGENTS.md` and does not override system instructions, user requests, project instructions, or session mode.
+This workflow supplements the host's project instructions and does not override system instructions, user requests, project instructions, or session mode.
 
 ## Routing Rules
 
@@ -52,7 +52,7 @@ Select only the minimum useful set.
 - Product UI implementation with a design system: use `ui-ux-pro-max`, then `design-system`, then `ui-styling`.
 - Existing Web review: use `web-design-guidelines`; add `ui-ux-pro-max` only when the findings require broader interaction or accessibility analysis.
 - Full design-to-review workflow: use `ui-ux-pro-max`, then `frontend-design`, then `web-design-guidelines`.
-- Backend, database-only, infrastructure, or non-visual scripting tasks: do not force any of the four peer skills.
+- Backend, database-only, infrastructure, or non-visual scripting tasks: do not force any of the six peer skills.
 
 If recommendations conflict, preserve accessibility, responsive behavior, interaction usability, and explicit user requirements before visual novelty.
 

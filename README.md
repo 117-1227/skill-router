@@ -24,16 +24,33 @@ $ui-ux-pro-max
 $web-design-guidelines
 ```
 
-## GitHub Installation
+## Installation
 
-Publish this directory in a GitHub repository, then install the skill using the GitHub skill installer with the repository path:
+Publish this directory in a GitHub repository, then install the skill using the platform's skill mechanism.
+
+### Codex
+
+Use the GitHub skill installer with the repository path:
 
 ```powershell
 python <CODEX_HOME>\skills\.system\skill-installer\scripts\install-skill-from-github.py `
   --url https://github.com/<owner>/<repository>/tree/<ref>/<path-to-skill-router>
 ```
 
-The installer places the skill under `$CODEX_HOME/skills/skill-router`. The four peer skills should remain installed separately.
+The installer places the skill under `$CODEX_HOME/skills/skill-router`.
+
+### Claude Code
+
+Place or install the directory so that the skill entry point is available at one of these locations:
+
+```text
+<project>/.claude/skills/skill-router/SKILL.md
+~/.claude/skills/skill-router/SKILL.md
+```
+
+Claude Code uses the shared `SKILL.md` and `references/` files. The optional `agents/openai.yaml` file is Codex-specific metadata and can be ignored by Claude Code.
+
+The six peer skills should remain installed separately for each host. The router does not copy or replace them.
 
 ## Adding Skills
 
