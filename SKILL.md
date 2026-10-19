@@ -1,6 +1,6 @@
 ---
 name: skill-router
-description: Route tasks to the smallest appropriate installed skill, assess whether Plan Mode is required, and coordinate analytics, UI/UX, visual design, and Web review workflows. Use when a request may match an installed skill or may require a complex multi-step change.
+description: Route tasks to the smallest appropriate installed skill, assess whether Plan Mode is required, and coordinate code review, debugging, security, analytics, UI/UX, visual design, and Web review workflows. Use when a request may match an installed skill or may require a complex multi-step change.
 metadata:
   version: "1.0.0"
 ---
@@ -48,6 +48,9 @@ Read [skill-registry.yaml](references/skill-registry.yaml) when the request may 
 
 The router is the automatic entry point. Peer skills are explicit-only by default. After selecting a peer skill, locate and read that peer's `SKILL.md` from the supported paths below and use its workflow. Do not rely on platform-level implicit invocation, and do not load every peer skill.
 
+- Use `code-review` to review changes since a fixed commit, branch, tag, or merge-base, including branches, pull requests, and work-in-progress diffs. It evaluates repository standards and specification compliance separately.
+- Use `diagnosing-bugs` for reproducible failures, exceptions, incorrect behavior, flaky bugs, and performance regressions that require investigation.
+- Use `security-best-practices` only when the user explicitly requests security guidance, a security review or report, or secure-by-default implementation for supported Python, JavaScript/TypeScript, or Go projects.
 - Use `analytics` for tracking, measurement, attribution, conversion events, GA4, GTM, UTM, Mixpanel, Segment, or questions about whether marketing or product activity is working.
 - Use `ui-ux-pro-max` for product structure, interaction, responsive behavior, accessibility, component systems, dashboards, or stack-specific UI implementation.
 - Use `frontend-design` for new pages, landing pages, brand sites, visual direction, typography, color, composition, or distinctive presentation.
@@ -69,13 +72,17 @@ If more than one copy exists, use the copy belonging to the active host and proj
 
 Select only the minimum useful set.
 
+- General branch, pull request, or diff review uses `code-review`; do not add `diagnosing-bugs` unless the user reports a concrete failure or regression.
+- Known broken, failing, incorrect, flaky, or slow behavior uses `diagnosing-bugs`; do not substitute a general code review for diagnosis.
+- General code review and debugging do not automatically invoke `security-best-practices`. Security routing requires an explicit security request.
+- If the user explicitly requests both a general code review and a security review, run `code-review` and `security-best-practices` as separate workflows and report their findings separately.
 - Analytics plus interface implementation: use `analytics` first for measurement requirements, then the applicable UI skill.
 - Product UI plus visual design: use `ui-ux-pro-max` first for structure and usability, then `frontend-design` for visual direction.
 - Design system workflow: use `design-system` first, then `ui-styling` for implementation.
 - Product UI implementation with a design system: use `ui-ux-pro-max`, then `design-system`, then `ui-styling`.
 - Existing Web review: use `web-design-guidelines`; add `ui-ux-pro-max` only when the findings require broader interaction or accessibility analysis.
 - Full design-to-review workflow: use `ui-ux-pro-max`, then `frontend-design`, then `web-design-guidelines`.
-- Backend, database-only, infrastructure, or non-visual scripting tasks: do not force any of the six peer skills.
+- Backend, database-only, infrastructure, or non-visual scripting tasks: do not force UI or Web-design skills, but still route explicit review, debugging, or security requests to their matching skill.
 
 If recommendations conflict, preserve accessibility, responsive behavior, interaction usability, and explicit user requirements before visual novelty.
 

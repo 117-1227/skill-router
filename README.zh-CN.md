@@ -4,6 +4,9 @@
 
 它不会替代或修改专业 peer skill。当前注册的 skill 包括：
 
+- `code-review`
+- `diagnosing-bugs`
+- `security-best-practices`
 - `analytics`
 - `frontend-design`
 - `ui-ux-pro-max`
@@ -20,6 +23,9 @@ peer skill 默认采用显式调用策略。路由器选中 peer skill 后，会
 用户可以显式指定 skill，显式选择优先：
 
 ```text
+$code-review
+$diagnosing-bugs
+$security-best-practices
 $analytics
 $frontend-design
 $ui-ux-pro-max
@@ -58,7 +64,15 @@ $CODEX_HOME/skills/skill-router
 
 Claude Code 使用共享的 `SKILL.md` 和 `references/` 文件。`agents/openai.yaml` 是 Codex 专用元数据，Claude Code 可以忽略。
 
-六个 peer skill 需要分别安装到对应平台。路由器不会复制或替换它们。
+所有已注册的 peer skill 需要分别安装到对应平台。路由器不会复制或替换它们。
+
+## 代码审查、故障诊断与安全审查
+
+- `code-review`：从固定的 Git 比较点审查分支、PR、提交范围或尚未提交的变更，并分别检查项目规范与需求实现。
+- `diagnosing-bugs`：处理已经出现的异常、错误结果、偶发故障或性能回退，首先建立可复现的反馈闭环。
+- `security-best-practices`：仅在用户明确要求安全建议、安全审查、安全报告或安全编码时使用，支持 Python、JavaScript/TypeScript 和 Go。
+
+三者互不替代：“审查这个 PR”使用 `code-review`；“这个接口为什么返回 500”使用 `diagnosing-bugs`；“检查这个登录模块的安全风险”使用 `security-best-practices`。
 
 ## 严格路由策略
 

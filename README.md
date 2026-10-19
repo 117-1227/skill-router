@@ -6,6 +6,9 @@
 
 It does not replace or modify peer skills. The initial registry covers:
 
+- `code-review`
+- `diagnosing-bugs`
+- `security-best-practices`
 - `analytics`
 - `frontend-design`
 - `ui-ux-pro-max`
@@ -22,6 +25,9 @@ Peer skills are explicit-only. The router reads the selected peer skill's `SKILL
 An explicit request takes precedence when needed:
 
 ```text
+$code-review
+$diagnosing-bugs
+$security-best-practices
 $analytics
 $frontend-design
 $ui-ux-pro-max
@@ -54,7 +60,15 @@ Place or install the directory so that the skill entry point is available at one
 
 Claude Code uses the shared `SKILL.md` and `references/` files. The optional `agents/openai.yaml` file is Codex-specific metadata and can be ignored by Claude Code.
 
-The six peer skills should remain installed separately for each host. The router does not copy or replace them.
+The registered peer skills should remain installed separately for each host. The router does not copy or replace them.
+
+## Code Review, Diagnosis, and Security
+
+- `code-review` reviews a branch, pull request, commit range, or work-in-progress diff from a fixed Git comparison point. It evaluates repository standards and specification compliance separately.
+- `diagnosing-bugs` investigates concrete failures, exceptions, flaky behavior, incorrect output, and performance regressions by first building a reproducible feedback loop.
+- `security-best-practices` is explicit-only and applies when the user requests security guidance, a security review or report, or secure-by-default implementation for supported Python, JavaScript/TypeScript, or Go projects.
+
+These skills do not replace one another: use `code-review` for reviewing changes, `diagnosing-bugs` for a known symptom, and `security-best-practices` for an explicit security request.
 
 ## Strict Routing Policy
 

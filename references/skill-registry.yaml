@@ -1,5 +1,51 @@
 version: "1.0"
 skills:
+  - name: code-review
+    priority: audit
+    invocation: explicit-only
+    responsibility: "Review code changes against repository standards and the originating specification from a fixed Git comparison point."
+    use_when:
+      - "Review a branch, pull request, commit range, or work-in-progress changes."
+      - "Review changes since a commit, branch, tag, or merge-base."
+      - "Check whether a diff follows repository standards and implements its specification."
+    exclude_when:
+      - "Diagnosing a concrete failure, exception, flaky bug, or performance regression."
+      - "A security-only review without a general code-review request."
+      - "Reviewing an entire codebase without a fixed Git comparison point."
+    follow_up_skills:
+      - diagnosing-bugs
+      - security-best-practices
+
+  - name: diagnosing-bugs
+    priority: diagnosis
+    invocation: explicit-only
+    responsibility: "Build a reproducible feedback loop, identify the root cause, and verify fixes for hard bugs and performance regressions."
+    use_when:
+      - "The user asks to diagnose or debug broken behavior."
+      - "Code throws, fails, produces incorrect output, behaves intermittently, or has become slow."
+      - "A bug or performance regression requires reproduction, minimisation, hypotheses, and instrumentation."
+    exclude_when:
+      - "A general branch, pull request, or diff review without a concrete failure."
+      - "A security review without a reported runtime symptom."
+      - "A simple, already-understood localized correction that does not require diagnosis."
+    follow_up_skills:
+      - code-review
+
+  - name: security-best-practices
+    priority: security
+    invocation: explicit-only
+    responsibility: "Provide language- and framework-specific security reviews, reports, and secure-by-default implementation guidance."
+    use_when:
+      - "The user explicitly requests security best practices or secure-by-default code."
+      - "The user explicitly requests a security review, audit, or vulnerability report."
+      - "Reviewing Python, JavaScript/TypeScript, or Go code for security risks."
+    exclude_when:
+      - "General code review, debugging, or feature implementation without an explicit security request."
+      - "The project language is outside the skill's supported languages."
+      - "The request concerns compliance or penetration testing beyond secure coding guidance."
+    follow_up_skills:
+      - code-review
+
   - name: analytics
     priority: domain
     invocation: explicit-only
