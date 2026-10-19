@@ -39,6 +39,8 @@ Read [skill-registry.yaml](references/skill-registry.yaml) when the request may 
 - Use `ui-ux-pro-max` for product structure, interaction, responsive behavior, accessibility, component systems, dashboards, or stack-specific UI implementation.
 - Use `frontend-design` for new pages, landing pages, brand sites, visual direction, typography, color, composition, or distinctive presentation.
 - Use `web-design-guidelines` for existing Web UI reviews, accessibility audits, UX reviews, best-practice checks, or pre-release Web validation.
+- Use `design-system` for design tokens, CSS variables, typography scales, spacing systems, component specifications, and design system migration.
+- Use `ui-styling` for Tailwind, shadcn/ui, Radix UI, accessible components, themes, dark mode, and frontend styling implementation.
 
 ## Combination Rules
 
@@ -46,6 +48,8 @@ Select only the minimum useful set.
 
 - Analytics plus interface implementation: use `analytics` first for measurement requirements, then the applicable UI skill.
 - Product UI plus visual design: use `ui-ux-pro-max` first for structure and usability, then `frontend-design` for visual direction.
+- Design system workflow: use `design-system` first, then `ui-styling` for implementation.
+- Product UI implementation with a design system: use `ui-ux-pro-max`, then `design-system`, then `ui-styling`.
 - Existing Web review: use `web-design-guidelines`; add `ui-ux-pro-max` only when the findings require broader interaction or accessibility analysis.
 - Full design-to-review workflow: use `ui-ux-pro-max`, then `frontend-design`, then `web-design-guidelines`.
 - Backend, database-only, infrastructure, or non-visual scripting tasks: do not force any of the four peer skills.

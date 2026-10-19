@@ -54,3 +54,31 @@ skills:
       - "Backend-only or non-Web work."
     follow_up_skills:
       - ui-ux-pro-max
+
+  - name: design-system
+    priority: foundation
+    responsibility: "Design tokens, component specifications, CSS variables, and systematic design architecture."
+    use_when:
+      - "Create or refine design tokens."
+      - "Define primitive, semantic, or component token layers."
+      - "Create spacing, typography, color, or component specifications."
+      - "Plan or migrate a design system."
+    exclude_when:
+      - "Pure visual exploration without reusable system requirements."
+      - "Component implementation without token or system decisions."
+    follow_up_skills:
+      - ui-styling
+
+  - name: ui-styling
+    priority: implementation
+    responsibility: "Implement accessible UI components, themes, responsive layouts, and styling systems."
+    use_when:
+      - "Build UI components with Tailwind, shadcn/ui, or Radix UI."
+      - "Implement dialogs, dropdowns, forms, tables, themes, or dark mode."
+      - "Convert design tokens or visual specifications into frontend code."
+      - "Establish consistent styling patterns across an application."
+    exclude_when:
+      - "Backend-only or non-visual work."
+      - "Visual direction without implementation."
+    follow_up_skills:
+      - web-design-guidelines

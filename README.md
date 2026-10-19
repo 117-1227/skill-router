@@ -8,6 +8,8 @@ It does not replace or modify peer skills. The initial registry covers:
 - `frontend-design`
 - `ui-ux-pro-max`
 - `web-design-guidelines`
+- `design-system`
+- `ui-styling`
 
 ## Automatic and Explicit Use
 
