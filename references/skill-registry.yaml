@@ -1,0 +1,56 @@
+version: "1.0"
+skills:
+  - name: analytics
+    priority: domain
+    responsibility: "Analytics tracking, measurement, attribution, and marketing or product performance decisions."
+    use_when:
+      - "Set up, improve, or audit analytics tracking."
+      - "GA4, Google Analytics, GTM, conversion tracking, event tracking, UTM, Mixpanel, or Segment."
+      - "Define a tracking plan or determine how to measure whether an activity is working."
+    exclude_when:
+      - "Backend-only logic without measurement requirements."
+      - "Pure visual design without tracking or measurement."
+    follow_up_skills:
+      - ui-ux-pro-max
+      - web-design-guidelines
+
+  - name: ui-ux-pro-max
+    priority: foundation
+    responsibility: "Product structure, interaction, responsive behavior, accessibility, and stack-specific UI implementation."
+    use_when:
+      - "Design, review, or refactor a Web, mobile, or desktop interface."
+      - "Information architecture, interaction flows, responsive layout, component systems, forms, feedback, or animation."
+      - "SaaS products, dashboards, data panels, or complex product interfaces."
+    exclude_when:
+      - "Backend-only, database-only, infrastructure, or non-visual scripting tasks."
+      - "A visual-only request with no product UI or interaction decisions."
+    follow_up_skills:
+      - frontend-design
+      - web-design-guidelines
+
+  - name: frontend-design
+    priority: visual
+    responsibility: "Visual direction, brand expression, typography, color, composition, and distinctive page presentation."
+    use_when:
+      - "Create a new page, landing page, brand site, or marketing page."
+      - "Choose visual direction, typography, color, layout, composition, or page personality."
+      - "Reshape an interface to avoid generic or template-like visual results."
+    exclude_when:
+      - "Backend-only or non-visual work."
+      - "A focused accessibility or compliance audit without visual redesign."
+    follow_up_skills:
+      - ui-ux-pro-max
+      - web-design-guidelines
+
+  - name: web-design-guidelines
+    priority: audit
+    responsibility: "Web Interface Guidelines compliance, accessibility review, UX review, and pre-release Web validation."
+    use_when:
+      - "Review existing UI code or a Web page."
+      - "Check accessibility, UX, responsive behavior, visual consistency, or Web best practices."
+      - "Perform a final Web review before release."
+    exclude_when:
+      - "Creating a visual direction from scratch without an existing Web implementation to review."
+      - "Backend-only or non-Web work."
+    follow_up_skills:
+      - ui-ux-pro-max
