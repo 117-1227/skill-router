@@ -81,7 +81,16 @@ If recommendations conflict, preserve accessibility, responsive behavior, intera
 
 ## Missing Peer Skills
 
-The router does not copy, modify, install, or replace peer skills. If a selected peer skill is unavailable, report the missing dependency and continue with the remaining applicable workflow.
+The router does not copy, modify, install, or replace peer skills. If a selected peer skill is unavailable:
+
+1. Report the peer skill name and every path checked.
+2. Explain what part of the task depends on the missing skill.
+3. Separate affected work from independent work.
+4. Propose a fallback plan using available skills or general guidance.
+5. State which references, scripts, platform capabilities, or validation guarantees are unavailable.
+6. Stop the affected workflow and wait for the user's confirmation before executing the fallback plan.
+
+After confirmation, follow the updated plan and label the result as a fallback. Never claim that the missing peer skill was used, and never silently substitute a similar skill.
 
 ## Extending the Registry
 

@@ -64,6 +64,28 @@ The router is the only automatic entry point. For every registered peer skill:
 
 When adding a skill, register it first, apply the host's explicit-only policy where supported, and test that the router can read its `SKILL.md`.
 
+## Missing Peer Skills
+
+When a registered peer skill is missing, the router pauses the affected workflow. It reports the missing name and checked paths, explains the impact, proposes an updated fallback plan, and waits for confirmation before continuing.
+
+The fallback must state what is unavailable. For example:
+
+```text
+Original:
+skill-router -> design-system -> ui-styling
+
+Missing:
+design-system is unavailable.
+
+Updated fallback:
+skill-router -> user confirmation
+-> general three-layer token guidance
+-> ui-styling
+-> reduced validation scope and an explicit fallback note
+```
+
+Independent work may continue only after it is included in the confirmed fallback plan. A fallback must never be reported as if the missing skill had been used.
+
 ## Adding Skills
 
 Add a new entry to `references/skill-registry.yaml` with:
@@ -72,6 +94,7 @@ Add a new entry to `references/skill-registry.yaml` with:
 - `responsibility`
 - `use_when`
 - `exclude_when`
+- `invocation: explicit-only`
 - optional `follow_up_skills`
 
 Keep detailed procedures in the new skill's own `SKILL.md`; do not copy them into this router.
