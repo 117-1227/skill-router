@@ -11,11 +11,15 @@ Use this skill as the entry point for tasks that may match one or more installed
 
 ## Explicit User Choice
 
-If the user names a skill or invokes `$skill-name`, treat that choice as the preferred route. Still apply the Planning Gate and do not load unrelated skills.
+If the user names a skill or invokes `$skill-name`, treat that choice as the preferred route. This does not expand authorization or bypass required planning and verification. Do not load unrelated skills.
 
 ## Planning Gate
 
-Determine whether the task is simple or complex before selecting a peer workflow.
+Read-only inspection, audits, and plan discussion may proceed without entering Plan Mode. They do not authorize file changes or external writes. Apply the remaining gate only to implementation work.
+
+When a plan is already approved and the current session mode permits execution, continue within its approved scope without restarting approval. If the scope, risk, or key approach changes materially, explain the change and obtain confirmation again.
+
+For implementation that does not yet have an approved plan, determine whether the task is simple or complex before selecting a peer workflow.
 
 A task is complex when it involves multiple files, architecture, refactoring,
 migration, deployment, production systems, databases, permissions, external
@@ -25,28 +29,19 @@ or creating or modifying skills, plugins, or automation workflows.
 A task is simple only when it is localized, low-risk, reversible, clearly
 defined, and does not involve any of the conditions above.
 
-If the task is complex and the host is not already in planning mode, stop and ask
-the user to enable the host's planning mode. In Codex, this is Plan Mode.
+If implementation requires a plan and the host is not already in planning mode, stop and ask the user to enable the host's planning mode. In Codex, this is Plan Mode.
 
-After planning mode is enabled:
+In planning mode, inspect the environment without mutation, resolve discoverable facts, ask only material questions, produce a decision-complete plan, and wait for confirmation. For tasks that require a plan, do not modify files or perform external writes before confirmation.
 
-- Explore the environment without mutating files;
-- Resolve discoverable facts before asking questions;
-- Ask only for decisions that materially affect the implementation;
-- Produce a decision-complete plan;
-- Wait for the user's confirmation.
-
-Do not modify files or perform external writes before the plan is confirmed.
-
-Small, clearly defined tasks may skip this planning gate.
-
-This workflow supplements the host's project instructions and does not override system instructions, user requests, project instructions, or session mode.
+Small, clearly defined tasks may skip this gate when explicitly authorized. Host system and developer instructions, permissions, project instructions, and the current session mode remain binding.
 
 ## Routing Rules
 
 Read [skill-registry.yaml](references/skill-registry.yaml) when the request may match an installed peer skill.
 
-The router is the automatic entry point. Peer skills are explicit-only by default. After selecting a peer skill, locate and read that peer's `SKILL.md` from the supported paths below and use its workflow. Do not rely on platform-level implicit invocation, and do not load every peer skill.
+The router is the automatic entry point for registered professional peer skills, which are explicit-only by default. After selecting one, locate and read its `SKILL.md` using the paths below. Do not rely on platform-level implicit invocation or load every peer.
+
+Host-provided system, plugin, and tool skills follow host requirements and their native workflows, including mandatory loading order. Do not impose the registered-peer invocation policy on them or modify their metadata to fit this router.
 
 - Use `code-review` to review changes since a fixed commit, branch, tag, or merge-base, including branches, pull requests, and work-in-progress diffs. It evaluates repository standards and specification compliance separately.
 - Use `diagnosing-bugs` for reproducible failures, exceptions, incorrect behavior, flaky bugs, and performance regressions that require investigation.
@@ -60,13 +55,16 @@ The router is the automatic entry point. Peer skills are explicit-only by defaul
 
 ## Peer Skill Paths
 
-Resolve a selected peer skill by checking these locations in order:
+Resolve a selected skill for the active host and project:
 
-1. `$CODEX_HOME/skills/<name>/SKILL.md`
-2. `<project>/.claude/skills/<name>/SKILL.md`
-3. `~/.claude/skills/<name>/SKILL.md`
+1. Use the applicable absolute skill path explicitly supplied by the host.
+2. Otherwise use the confirmed installation directory for the active host.
+3. For Codex, use `$CODEX_HOME/skills/<name>/SKILL.md` when `CODEX_HOME` is non-empty; otherwise use `~/.codex/skills/<name>/SKILL.md`.
+4. For Claude Code, check `<project>/.claude/skills/<name>/SKILL.md`, then `~/.claude/skills/<name>/SKILL.md`.
 
-If more than one copy exists, use the copy belonging to the active host and project. If no copy exists, report the missing peer skill and stop that workflow.
+Prefer the applicable active-host/project copy; do not silently fall back to another host. For system and plugin skills, use the path supplied by the host. Do not scan historical plugin caches, migrate, or copy skills.
+
+If the required skill or entrypoint is missing, follow Missing Peer Skills below. Do not download, install, replace, or claim to have used a missing skill.
 
 ## Combination Rules
 
